@@ -1,9 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from . forms import SignupForm 
-from .models import Search
-from .forms import SearchForm
+#from urllib3 import HttpResponse
+from . forms import SignupForm
+from .models import *
+from django.db.models import Q
+import datetime
+from django.utils.timezone import datetime
+#from .forms import SearchForm
 
 # Create your views here.
 
@@ -15,6 +19,10 @@ def home(request):
 
 def base(request):
     return render(request, 'base.html')
+
+
+def phone(request):
+    return render(request, 'phone.html')
 
 
 def loginn(request):
@@ -40,12 +48,27 @@ def signup(request):
         if form.is_valid():
             form.save()
     context = {'form': form}
-    return render(request, 'signup.html', context) 
+    return render(request, 'signup.html', context)
+
+
+# def search(request):
+#     if 'q' in request.GET:
+#        q = request.GET['q']
+#         data = Data.objects.filter(last_name__icontains=q)
+#         multiple_q = Q(Q(product__icontains=q) | Q(
+#             type__icontains=q) | Q(date__icontains=q))
+
+#         data = Search.objects.filter(multiple_q)
+#     else:
+#         data = Search.objects.all()
+#     context = {
+#         'data': data
+#     }
+#     return render(request, 'search.html', context)
 
 
 def search(request):
-    if request.method == 'POST':
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
+    item = request.GET['q']
+    # print(item)
+    search_result = product.objects.get(product_category=item)
+    return HttpResponse(search_result)

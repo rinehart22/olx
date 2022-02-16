@@ -1,0 +1,67 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+
+
+{% block go %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flagship killer</title>
+</head>
+<body> <br>
+    
+
+<div class='container'>
+    <div class="row row-cols-1 row-cols-md-3 g-4 width=50% height=50%"> 
+
+  <div class="col">
+    <div class="card h-50">
+      <img src="{% static 'images/a.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">₹ 95,000</h5>
+        <p class="card-text"> iphone 11 pro.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="card h-50">
+      <img src="{% static 'images/on.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">₹ 35,000</h5>
+<p class="card-text">Oneplus pro.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-50">
+      <img src="{% static 'images/s.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"> ₹ 25,000</h5>
+        <p class="card-text">Samsung S8 model.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+</div>
+</body>
+</html> 
+
+{% endblock go %}

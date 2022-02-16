@@ -10,9 +10,9 @@ class SignupForm(UserCreationForm):
         fields = ['username','email','password1', 'password2'] 
 
 
-class SearchForm(forms.ModelForm):
-    product = forms.CharField(label='')
+#class SearchForm(forms.ModelForm):
+ #   product = forms.CharField(label='')
 
-    class Meta:
-        model = Search
-        fields = ['product', ]
+  #  class Meta:
+   #     model = Search
+    #    fields = ['product', ]
