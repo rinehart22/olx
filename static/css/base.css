@@ -1,5 +1,6 @@
 body {
-  font-family: century gothic;
+  font-family: century gothic; 
+  background-color: hsl(0, 0%, 98%);
 }
 
 .nav {
@@ -27,3 +28,8 @@ margin-right: 1em;
   text-align: center;
   margin-top: 12px;
 }
+
+
+
+
+

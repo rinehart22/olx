@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+{% block go %} 
+
+
+{% for i in all_prod %}
+
+
+
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{i.images.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{i.product_name}} </h5>
+    
+    <p class="card-text">{{i.price}} </p>
+    
+ 
+    
+
+    
+  </div>
+</div>
+   <a href="{% url 'read' i.id %}">Read</a>
+{% endfor %}
+
+{% endblock go %}
+
+

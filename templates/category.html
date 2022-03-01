@@ -1,0 +1,68 @@
+
+
+
+
+{% block go %} 
+<form action='' method='POST'> 
+
+     {% csrf_token %} 
+
+      <div class='container'> 
+           
+
+
+
+
+{% comment %}         
+          <div class="col-sm-6 col-xs-12 col-lg-4">
+            
+            
+       <div class="dropdown dropend">
+    
+            <button type= 'button' class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" role="button">View details</button>
+         
+
+
+
+           
+              
+
+
+
+           <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-black" href="{% url 'phone' %}">USA</a></li> 
+
+            <li><a class="dropdown-item text-black" href="{% url 'phone' %}">Uk</a></li> 
+
+            <li><a class="dropdown-item text-black" href="{% url 'phone' %}">Cannada</a></li>  
+
+            <li><a class="dropdown-item text-black" href="{% url 'phone' %}">Australia</a></li> 
+
+          
+          
+          
+          
+          </ul></div> </div>  {% endcomment %}
+
+                 
+
+     
+
+      <button class="button"><a href="{% url 'phone' %}">mobiles</a></button> 
+
+      {% comment %} <button class="button"><a href="{% url 'car' %}">cars</a></button> 
+
+      <button class="button"><a href="{% url 'bike' %}">bike</a></button> 
+         {% endcomment %}
+  
+
+
+               
+        </form>
+
+
+
+
+
+
+{% endblock go %}

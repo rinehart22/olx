@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block go %}  <br><br>
+
+
+<div class= 'container'>
+        <div class="row">  <br><br>
+
+<form action="" method='POST' enctype="multipart/form-data"> 
+
+    {% csrf_token %}  
+
+    {{form.as_p}}
+
+      
+      	<input class="btn login_btn" type="submit" value="postnow">
+
+         
+
+          
+           
+      </form>
+      
+    </div>
+        
+        
+        
+
+
+                             {% comment %} </div><br><br>
+                        </div>  {% endcomment %}
+
+{% comment %} 
+                        <div class="col-sm-6 col-lg-4 col-md-4"> 
+                 <div class="card">
+                <img src="{% static 'images/a.jpg' %}" class="card-img-top" alt="9"> 
+                <h6 class="card-title">Categories</h6>
+				 {% endcomment %}
+        
+        
+        
+
+
+                             {% comment %} </div><br><br>
+                        </div> 
+          
+                </div> 
+        </div> {% endcomment %}
+
+
+{% endblock go %}

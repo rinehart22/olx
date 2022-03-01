@@ -2,9 +2,63 @@
 
 {% load static %} 
 
-{% block go %} 
+{% block go %} <br><br>
 
-<h2>hello </h2>
+
+<style>
+  button {
+    display: block;
+   
+    margin: none;
+    background-color: danger;
+  }
+  </style>
+
+        
+
+
+            {% for i in all_prod %}
+
+<div class='container'>
+    <div class="row">
+ 
+            <div class="col-sm-6 col-lg-4 col-md-4">
+            <div class="card" style="width: 18rem;"> 
+
+                <img class="card-img-top" src="{{i.images.url}}" alt="Card image cap">
+                <div class="card-body"> 
+                    <h5 class="card-title">{{i.product_name}} </h5>
+                    <p class="card-text">{{i.price}} </p>
+                    
+   <div class="float-start"> <a href="{% url 'read' i.id %}">View</a></div>
+   <div class="float-end"> <a href="{% url 'update' i.id %}">update</a></div>
+   <div class="mx-auto w-25"> <button type="button" class="rounded-circle" data-bs-toggle="modal" data-bs-target="#myModal"><a href="{% url 'delete' i.id %}">delete</a></button></div> 
+
+  
+ 
+
+
+    
+                </div>
+            <div>
+                </div>
+        </div><br>
+                 
+
+    
+
+</div>
+
+  
+
+
+                  {% endfor %} 
+
+
+
+
+                
+
 
 {% endblock go %}
 

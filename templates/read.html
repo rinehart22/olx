@@ -1,0 +1,28 @@
+{% extends 'base.html'%} 
+{% load static %}
+
+
+{% block go %}  <br> 
+
+<div class="container p-5 my-5 bg-dark text-white">
+    
+        <h2>{{all_prod.product_name}}</h2>
+        <h3>{{all_prod.price}}</h3>
+        
+        <p>The .breadcrumb class indicates the current page's location within a navigational hierarchy:</p>
+        
+        <img src ="{{all_prod.images.url}}" width = 400>
+        
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Photos</a></li>
+            <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
+            <li class="breadcrumb-item"><a href="#">hyderabad</a></li>
+            <li class="breadcrumb-item active">Rome</li>
+        </ul>
+</div>
+
+
+    
+{% endblock go %}
+
+

@@ -1,0 +1,1 @@
+web: gunicorn olxpr.wsgi --log-file - --log-level debug

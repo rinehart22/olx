@@ -1,0 +1,44 @@
+
+
+
+{% block go %} 
+
+
+
+
+ <div class='container'>
+<form action="" method='POST' enctype="multipart/form-data"> 
+
+    {% csrf_token %}  
+
+    {{form}}
+
+      
+      	<input class="btn login_btn" type="submit" value="postnow">
+
+         
+
+          
+           
+      </form>
+      
+    </div>
+
+
+
+
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+{% endblock go %}
