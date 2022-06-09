@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o5#23sj07x4w4ba22=+3s$*%(m&5p-k6#8g7dzw(hw!!f4=^yy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','127.0.0.1:8000']
 
 
 # Application definition
@@ -133,3 +133,4 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'

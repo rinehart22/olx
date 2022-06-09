@@ -1,3 +1,4 @@
+from calendar import c
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -10,10 +11,14 @@ from django.utils.timezone import datetime
 #from .forms import SearchForm
 
 # Create your views here.
-
+from django.contrib import messages
 
 def home(request):
+
+    CRITICAL = 5
+    
     all_prod = Product.objects.all()
+    messages.success(request, 'Three credits remain in your account.')
     return render(request, 'home.html', {'all_prod': all_prod})
 
 
@@ -58,7 +63,7 @@ def signup(request):
 
 # def search(request):
 #     if 'q' in request.GET:
-#        q = request.GET['q']
+#         q = request.GET['q']
 #         data = Data.objects.filter(last_name__icontains=q)
 #         multiple_q = Q(Q(product__icontains=q) | Q(
 #             type__icontains=q) | Q(date__icontains=q))
@@ -79,23 +84,102 @@ def signup(request):
 #     return HttpResponse(search_result)
 
 # def search_item(request):
-#     if 'q' in request.GET:
-#         q = request.GET['q']
-#         print(q)
 
-#         data = category.objects.filter(
-#             Q(cate__icontains=q))  # .order_by('-id')
-#         mobile = mobilebrand.objects.filter(
-#             Q(mb__icontains=q)).values()
-#         multiple_q = Q(Q(product_name__icontains=q) | Q(
-#             product_category__icontains=q) | Q(price__icontains=q) | Q(images__icontains=q))
-#     else:
-#         data = category.objects.all()
-#     return render(request, 'search.html', {'data': data, 'mobile': mobile,  'multiple_q':  multiple_q, })
-def search_item(request):
-    data = request.GET['q']
-    all_prod = Product.objects.filter(product_category=data)
-    return render(request, 'all_prod.html', {'all_prod': all_prod})
+#     # data = Product.objects.all().order_by("product_Name")
+#     query = request.GET["q"]
+#     if query is not None:
+#         data = all_products.filter(Q(product_Name__icontains=query) |Q(product_category__icontains=query)).distinct()
+    # if 'q' in request.GET:
+    #     q = request.GET['q']
+    #     print(q)
+
+    #     # data = category.objects.filter(Q(cate__icontains=q))  # .order_by('-id')
+    #     #x = Q(mb__icontains=q)
+        
+    #     multiple_q = Q(Q(product_name__icontains=q) | Q(product_category__icontains=q) | Q(price__icontains=q) | Q(images__icontains=q))
+    #     data = Product.objects.filter(multiple_q).values()
+    # else:
+    #     data = Product.objects.all()
+        # return render(request, 'all_prod.html', { 'data': data })
+
+
+#this correct one 
+# def search_item(request):
+#     data = request.GET['q']
+#     if data is not None:
+#     # all_prod = Product.objects.filter(price=data)
+#         all_prod = Product.objects.filter(price__icontains=data)
+#         all = Product.objects.filter(product_name__icontains=data)
+        
+#         # all = Product.objects.filter(product_category=data)
+#     return render(request, 'all_prod.html', {'all_prod': all_prod, 'all': all})
+
+
+
+def search_it(request):
+    all_prod = Product.objects.all()
+    if request.method == 'GET':
+        #breakpoint()
+        query= request.GET.get('q')
+        #submitbutton= request.GET.get('submit')
+        #data = category.objects.get(cate=query)
+        
+        #print(data)
+        
+        if query is not None:
+            lookups= Q(price__icontains=query) | Q( product_name__icontains=query) | Q( mod__icontains=query) | Q(product_category=query)
+
+            results= Product.objects.filter(lookups).distinct()
+
+            context={'results': results
+                     }
+
+            return render(request, 'home.html', context)
+
+    else:
+        return render(request, 'home.html')
+
+
+
+
+
+
+
+
+# def search_item(request):
+#     if request.method == 'POST':
+#         q = request.POST['q']
+#         s = Product.objects.filter(price__icontains=q)
+#         return render(request, 'all_prod.html', {'q': q, 's': s})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# q = request.GET['q']
+# if q is not None:
+
+#     query = t.objects.filter(Q(id__icontains=q) | Q(title__icontains=q) | Q(url__icontains=q))
+#     return render(request, 'search/results_table.html', {'tbl_name': table_name,
+#                                                          'details': query,
+#                                                          'query': q})
+
+# else:
+#     return HttpResponse("Please submit a search term!")
+
+
+
 
 
 def read_item(request, id):

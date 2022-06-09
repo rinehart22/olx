@@ -4,64 +4,148 @@
 {% block go %} <br><br>
 
 
+<br/>
+  <form action="{% url 's' %}" method="get" value="{{request.GET.q}}">
+
+Search <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search posts"/>
+<input type="submit" name="submit" value="Search"/>
+</form>  
 
 
-{% for data in data %} 
 
+{% if query== {{request.GET.get}} %}
+
+{% for result in results %}
+
+
+<br/><div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{result.images.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{result.product_name}}  </h5>
+    
+    <p class="card-text">{{result.price}} </p>
+    <p class="card-text">{{result.mod}}</p>
+     <p class="card-text">{{result.product_category_id}}</p> 
+    
+
+    
+  </div>
+</div>
+{% endfor %}
+
+{% else %}
+
+no items found for your serach
+
+{% endif %}
+
+
+
+{% comment %} <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{result.product_name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{result.cate}}</h6>
+    <p class="card-text"> {{result.price}} </p>
+    <a href="#" class="card-link">Car</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div> {% endcomment %}
+
+
+
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+{% if q %} 
+
+{% for i in s %}
+{{s}}
 <div class= 'container'>
         <div class="row">  <br><br>
+                <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{i.images.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{i.product_name}}  </h5>
+    
+    <p class="card-text">{{i.price}} </p> {% endcomment %}
 
-                 <div class="col-sm-6 col-lg-4 col-md-4"> 
+ 
+    
+{% comment %} {% endfor %}
+     {% endcomment %}
+  {% comment %} </div>
+</div> {% endcomment %}
+
+                 {% comment %} <div class="col-sm-6 col-lg-4 col-md-4"> 
                  <div class="card">
                 <!img src="{% static 'images/a.jpg' %}" class="card-img-top" alt="9"> 
-                <h6 class="card-title">Categories</h6>
+                <h6 class="card-title">Categories</h6> {% endcomment %}
 				
         
-        <p>{{data.cate}}</p> 
+        {% comment %} <p>{{data.cate}}</p> 
+
+         <p>{{data.product_name}}</p> 
+           <p>{{data.product_category}}</p> 
+             <p>{{data.price}}</p>  {% endcomment %}
+
         
 
 
-                             </div><br><br>
+                             {% comment %} </div><br><br>
                         </div> 
                 </div> 
         </div>
         
              
         
-{% endfor %} 
+{% endif %}  {% endcomment %}
 
 
 
 
 
 
- {% for mobile in mobile %} 
+ {% comment %} {% for mobile in mobile %} 
 
 <div class= 'container'>
         <div class="row">  <br><br>
 
-                 <div class="col-sm-6 col-lg-4 col-md-4"> 
+                 <div class="col-sm-6 col-lg-4 col-md-4">  {% endcomment %}
 
                 
 
-                            <div class="card"> 
-
-                                {% if mobile.image %} 
-                                    
-                            <img src="{% static 'images/on.jpg' %}" class="card-img-top" alt="9"> 
-                                {% endif %}
-                             <h6 class="card-title">Brands</h6>
-				
+{% comment %}                            
         
 
-         <p>{{mobile.mb}}</p> 
+         <p>{{mobile.product_name}}</p> 
+           <p>{{mobile.product_category}}</p> 
+             <p>{{mobile.price}}</p> 
                             </div>
                                 </div> 
                         </div> 
                 </div>
         
            
-{% endfor %} 
+{% endfor %}  {% endcomment %}
 
 
 {% comment %} 
@@ -78,4 +162,4 @@
 
 
 
-{% endblock go %}
+{% endblock %}

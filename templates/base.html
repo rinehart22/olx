@@ -62,13 +62,13 @@ navbar input[type=text] {
       </ul> 
        
       
-      <form method="get" action="{% url 'search' %}" class="d-flex"> 
+      <form method="get" action="{% url 's' %}" class="d-flex" value="{{request.GET.q}}"> 
 
          
       
         <input class="form-control mr-sm-2 me-2" type="search" placeholder="Find cars, Mobilephones and more.." name="q" id="search" style= 'width:400px;'> 
-
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button> 
+<input type="submit" name="submit" value="Search"/>
+        
        
          
       </form>
@@ -175,7 +175,7 @@ navbar input[type=text] {
                   <li class="nav-item">  
                  
            
-                    <a class="nav-link active" href="{% url 'search' %}"> Cars</a> 
+                    <a class="nav-link active" href="{% url 's' %}"> Cars</a> 
                </li>  
 
                   <li class="nav-item">

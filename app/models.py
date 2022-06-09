@@ -38,6 +38,7 @@ class Product(models.Model):
         category, on_delete=models.CASCADE, null=True, blank=True)
 
     price = models.PositiveBigIntegerField(default=0)
+    mod = models.CharField(max_length=200, null=True)
     images = models.ImageField(blank=True, null=True, upload_to="images/")
 
     def __str__(self):

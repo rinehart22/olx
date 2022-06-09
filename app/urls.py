@@ -10,9 +10,13 @@ urlpatterns = [
     path('delete/<str:id>/', views.delete, name='delete'),
     
     path('create/', views.create, name='create'),
-    path('search/', views.search_item, name='search'),
+    
+    # path('search/', views.search_item, name='search'),
+
+       path('s/', views.search_it, name='s'),
 
     path('phone/', views.product, name='phone'),
+    
     path('allproducts/', views.all_products, name='all_products'),
 
     path('category/', views.categoryy, name='category'),
