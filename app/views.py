@@ -16,7 +16,71 @@ from django.contrib import messages
 def home(request):
 
     CRITICAL = 5
+    all_prod = Product.objects.all()
     
+    ad = Product.objects.filter(price__icontains='1000000')
+    print() # <QuerySet [<Product: yamaha r1 M>
+
+    d = Product.objects.filter(price__iexact='455')
+    print()  # <QuerySet [<Product: yamaha r1 M>]
+
+    e = Product.objects.filter(price__in='15000')
+    print()  # <QuerySet [<Product: yamaha r1 M>]
+
+    union = ad.union(d)
+    print(union)
+
+    result = ad | d 
+    print(result, '-------------------')
+
+    var = list(chain(ad,d))
+    print(var, '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+
+
+
+
+    # using not query   User.objects.filter(~Q(id__lt=5))
+
+    all = Product.objects.filter(~Q(id__lt=8)) #it restrict objects below lessthan 8
+    print(all)# QuerySet [<Product: ramb>]
+
+    a  = Product.objects.all().values('mod','price','id')
+    print(a)# <QuerySet [{'mod': 'r1', 'price': 1000000, 'id': 4},
+    print()
+
+    aa  = Product.objects.all().only('id')
+    print(aa) #<QuerySet [<Product: yamaha r1 M>, <Product: auto>
+    print()
+    av  = Product.objects.all().values_list('id','price')
+    print(av)  #<QuerySet [(4, 1000000), (5, 9500000)
+    print(str(all_prod.query)) # it displays sql query syntax
+    print()
+    print('vvvvvvvvvvv')
+
+    al = Product.objects.all().aggregate(Avg('price'))
+    print() # {'price__avg': 2628863.75}
+
+    als = Product.objects.all().aggregate(Sum('price'))
+    print()  #{'price__sum': 10515455}
+    ac = Product.objects.all().aggregate(Count('price'))
+    ao = Product.objects.all().order_by('-price')[0]
+    am = Product.objects.all().order_by(Lower('mod'))
+    
+    print()
+    print()
+    print()
+    print()
+
+    ex = Product.objects.filter(price__exact=15000) # [<Product: smartphone Mi A3>, <Product: iphone>]>
+    print()
+    exg = Product.objects.get(id__iexact=8) # iphone
+    print()
+    
+    nan = Product.objects.filter(mod__icontains='A4')
+    print()
+    p =Product.objects.filter(product_name__startswith='iphone')
+    
+
     all_prod = Product.objects.all()
     messages.success(request, 'Three credits remain in your account.')
     return render(request, 'home.html', {'all_prod': all_prod})
